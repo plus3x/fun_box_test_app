@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/plus3x/fun_box_test_app.png?branch=master)](http://travis-ci.org/plus3x/fun_box_test_app)
+
 ## Реализуйте web-приложение (Rails проект), которое удовлетворяет нижеизложенным требованиям.
 
 + Приложение содержит две страницы: / и /admin

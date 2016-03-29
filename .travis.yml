@@ -1,0 +1,9 @@
+cache: bundler
+language: ruby
+install:
+  - bundle install --retry=3
+script:
+  - bundle exec rake
+rvm:
+  - 2.2
+  - 2.3.0
