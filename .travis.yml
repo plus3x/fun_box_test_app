@@ -5,5 +5,4 @@ install:
 script:
   - bundle exec rake
 rvm:
-  - 2.2
   - 2.3.0
