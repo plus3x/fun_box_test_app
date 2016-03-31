@@ -19,6 +19,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'foreman', require: false
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'rubocop', require: false
