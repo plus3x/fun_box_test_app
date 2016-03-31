@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+
+@import bootstrap-sprockets
+@import bootstrap
+
+body
+  > .container
+    padding: 0
+    width: auto
+    > .container
+      width: auto
+    nav.navbar
+      -webkit-border-radius: 0
+      -moz-border-radius: 0
+      border-radius: 0
+      > .container-fluid
+        width: auto
+      li.active > a, li.active > a:hover
+        background-color: #4c4c4c
+      > .container
+        padding: 0 10px
+        width: auto
+    footer
+      padding-top: 10px
+      text-align: center
+
+#error_explanation
+  color: #d00
+  h4
+    margin-bottom: 2px
+  ul
+    list-style: none
+    margin: 0 0 10px 0
+    padding-left: 10px
+
+.field_with_errors input
+  background-color: #fdd
+  color: #d00
