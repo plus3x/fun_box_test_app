@@ -1,12 +1,6 @@
 Metrics/LineLength:
   Max: 120
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
-
-Style/MethodCalledOnDoEndBlock:
-  Enabled: true
