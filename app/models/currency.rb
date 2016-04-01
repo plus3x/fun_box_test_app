@@ -1,6 +1,6 @@
 class Currency
   TOKEN = ENV['XIGNITE_TOKEN']
-  SITE = 'http://globalcurrencies.xignite.com'
+  SITE = 'http://globalcurrencies.xignite.com'.freeze
 
   def self.get(symbol = 'USDRUB', date: Date.current)
     uri = URI("#{SITE}/xGlobalCurrencies.json/GetRealTimeRate")
