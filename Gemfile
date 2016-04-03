@@ -12,6 +12,7 @@ gem 'haml-rails'
 # gem 'jbuilder', '~> 2.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'sidekiq'
+gem 'sidekiq-cron'
 
 group :development, :test do
   gem 'sqlite3'
@@ -19,6 +20,9 @@ group :development, :test do
 end
 
 group :development do
+  # FIXME: Wait version supporting Rack 2
+  gem 'sinatra', require: false, github: 'sinatra/sinatra', branch: 'master'
+
   gem 'foreman', require: false
   gem 'spring'
   gem 'listen', '~> 3.0.5'

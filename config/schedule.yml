@@ -1,0 +1,3 @@
+currency_collector:
+  cron: "*/1 * * * *"
+  class: CurrencyCollector
