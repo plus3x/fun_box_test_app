@@ -3,3 +3,7 @@
 
     .navbar-header
       = link_to 'FunBoxTestApp', home_path, class: 'navbar-brand'
+
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        = marked_li_with_link_to 'Admin', admin_path
