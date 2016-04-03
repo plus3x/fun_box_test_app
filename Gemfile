@@ -26,7 +26,7 @@ group :development do
 end
 
 group :development, :production do
-  # gem 'redis', '~> 3.0'
+  gem 'redis', '~> 3.0'
   gem 'uglifier', '>= 1.3.0'
 end
 

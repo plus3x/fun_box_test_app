@@ -22,3 +22,6 @@
 
 # foreman environment
 .env
+
+# ignore redis dump
+dump.rdb
