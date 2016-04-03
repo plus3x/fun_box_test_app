@@ -11,7 +11,7 @@ gem 'turbolinks', '~> 5.x'
 gem 'haml-rails'
 # gem 'jbuilder', '~> 2.0'
 # gem 'bcrypt', '~> 3.1.7'
-# gem 'sidekiq'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'sqlite3'
