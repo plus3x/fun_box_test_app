@@ -5,7 +5,7 @@
     %title= content_for(:page_title) || 'FunBoxTestApp'
     /= favicon_link_tag
     = csrf_meta_tags
-    /= action_cable_meta_tag
+    = action_cable_meta_tag
     = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all', async: true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %body
@@ -24,6 +24,6 @@
           .col-md-9
             = yield
           .col-md-3
-            = render Currency.find_or_initialize_by(date: Date.current)
+            = render Currency.last
 
       = render 'footer'
