@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 20160402182828) do
 
   create_table "currencies", force: :cascade do |t|
     t.float    "value"
-    t.date     "date"
+    t.datetime "to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "currencies", ["date"], name: "index_currencies_on_date"
+  add_index "currencies", ["to"], name: "index_currencies_on_to"
 
 end

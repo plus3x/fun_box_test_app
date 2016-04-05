@@ -13,17 +13,13 @@
 
       = render 'header'
 
-      - flash.each do |key, value|
-        %div{ class: "alert alert-dismissible alert-#{key == 'notice' ? 'success' : 'danger'}" }
-          = value
-          %button.close{ type: :button, 'data-dismiss': 'alert', 'aria-label': 'Close' }
-            %span{ 'aria-hidden': 'true' } &times;
+      = render 'notification'
 
       .container
         .row
           .col-md-9
             = yield
           .col-md-3
-            = render Currency.last
+            = render Currency.current
 
       = render 'footer'
