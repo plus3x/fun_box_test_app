@@ -1,12 +1,10 @@
-sudo: false
-cache: bundler
 language: ruby
-install:
-  - bundle install --retry=3
+cache: bundler
+bundler_args: --without development production
+rvm:
+  - 2.3.0
 script:
   - bundle exec rubocop
   - bundle exec rails test
-rvm:
-  - 2.3.0
 services:
   - redis-server
