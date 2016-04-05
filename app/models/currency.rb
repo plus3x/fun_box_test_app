@@ -1,11 +1,11 @@
 class Currency < ApplicationRecord
   validates :value, :to, presence: true
 
-  after_commit { CurrencyRelay.perform_later Currency.current }
+  after_commit { CurrencyRelay.perform_later }
 
   class << self
     def current
-      if where("'to' > ?", Time.zone.now).exists?
+      if where('"to" > ?', Time.zone.now).exists?
         last
       else
         new(value: current_currency)

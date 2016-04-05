@@ -1,6 +1,6 @@
 class CurrencyRelay < ApplicationJob
-  def perform(currency)
-    view = ApplicationController.renderer.render(currency)
+  def perform
+    view = ApplicationController.renderer.render(Currency.current)
 
     ActionCable.server.broadcast 'currency', view
   end
