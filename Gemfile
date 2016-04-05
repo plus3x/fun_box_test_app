@@ -14,6 +14,9 @@ gem 'haml-rails'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+# FIXME: Wait version supporting Rack 2
+gem 'sinatra', require: false, github: 'sinatra/sinatra', branch: 'master'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails'
@@ -21,9 +24,6 @@ group :development, :test do
 end
 
 group :development do
-  # FIXME: Wait version supporting Rack 2
-  gem 'sinatra', require: false, github: 'sinatra/sinatra', branch: 'master'
-
   gem 'foreman', require: false
   gem 'spring'
   gem 'listen', '~> 3.0.5'
