@@ -30,11 +30,11 @@ group :development do
 end
 
 group :development, :production do
+  gem 'rails_12factor'
   gem 'redis', '~> 3.0'
   gem 'uglifier', '>= 1.3.0'
 end
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor' # for heroku static files and logging
 end
