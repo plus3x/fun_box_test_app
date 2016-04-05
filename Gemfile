@@ -17,6 +17,7 @@ gem 'sidekiq-cron'
 group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'rubocop', require: false
 end
 
 group :development do
@@ -26,7 +27,6 @@ group :development do
   gem 'foreman', require: false
   gem 'spring'
   gem 'listen', '~> 3.0.5'
-  gem 'rubocop', require: false
 end
 
 group :development, :production do
