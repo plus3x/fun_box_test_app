@@ -14,11 +14,19 @@ class CurrenciesControllerTest < ActionDispatch::IntegrationTest
     assert_difference 'Currency.count' do
       post currencies_url, xhr: true, params: { currency: { to: @currency.to, value: @currency.value } }
     end
-    assert_response :success
+    assert_template :success
+
+    assert_no_difference 'Currency.count' do
+      post currencies_url, xhr: true, params: { currency: { to: @currency.to, value: '' } }
+    end
+    assert_template :error
   end
 
   test 'should update currency via ajax' do
     patch currency_url(@currency), xhr: true, params: { currency: { to: @currency.to, value: @currency.value } }
-    assert_response :success
+    assert_template :success
+
+    patch currency_url(@currency), xhr: true, params: { currency: { to: @currency.to, value: '' } }
+    assert_template :error
   end
 end

@@ -1,4 +1,4 @@
-class CurrencyUpdater
+class CurrencyWorker
   include Sidekiq::Worker
 
   def perform

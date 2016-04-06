@@ -17,6 +17,12 @@ gem 'sidekiq-cron'
 # FIXME: Wait version supporting Rack 2
 gem 'sinatra', require: false, github: 'sinatra/sinatra', branch: 'master'
 
+group :test do
+  gem 'mocha'
+  gem 'simplecov', require: false
+  gem 'rails-controller-testing'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails'
