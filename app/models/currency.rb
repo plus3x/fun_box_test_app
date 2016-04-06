@@ -15,7 +15,7 @@ class Currency < ApplicationRecord
     private
 
     def current_currency
-      Net::HTTP.get(URI('http://cbr.ru'))[%r{</i>(.*)</div}, 1]
+      Net::HTTP.get(URI('http://cbr.ru'))[%r{</i>(.*)</div}, 1].sub(',', '.')
     end
   end
 end
