@@ -7,7 +7,6 @@ before_script:
   - export DISPLAY=:99.0
   - phantomjs --version
   - firefox --version
-  - chrome --version
 script:
   - bundle exec rubocop
   - bundle exec rails test
