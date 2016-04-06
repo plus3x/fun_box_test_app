@@ -22,7 +22,6 @@ group :cucumber do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'poltergeist', require: false
-  gem 'capybara-webkit', require: false
   gem 'selenium-webdriver', require: false
 end
 
