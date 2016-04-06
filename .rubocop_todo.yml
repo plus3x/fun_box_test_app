@@ -4,3 +4,7 @@ Metrics/LineLength:
 Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
+
+Style/NestedModifier:
+  Exclude:
+    - lib/utils.rb

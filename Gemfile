@@ -17,9 +17,19 @@ gem 'sidekiq-cron'
 # FIXME: Wait version supporting Rack 2
 gem 'sinatra', require: false, github: 'sinatra/sinatra', branch: 'master'
 
+group :cucumber do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'poltergeist', require: false
+  gem 'capybara-webkit', require: false
+  gem 'selenium-webdriver', require: false
+end
+
+gem 'simplecov', require: false, group: %i(cucumber test)
+
 group :test do
   gem 'mocha'
-  gem 'simplecov', require: false
   gem 'rails-controller-testing'
 end
 

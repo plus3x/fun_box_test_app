@@ -1,0 +1,8 @@
+default: --tags ~@wip --no-source
+
+progress: --profile default SCREENSHOTS=true --format progress
+ci: --profile default SCREENSHOTS=true --format html --out report.html --format pretty
+
+browser_safari:  SCREENSHOTS=true DRIVER=selenium BROWSER=safari  --profile default
+browser_firefox: SCREENSHOTS=true DRIVER=selenium BROWSER=firefox --profile default
+browser_chrome:  SCREENSHOTS=true DRIVER=selenium BROWSER=chrome  --profile default

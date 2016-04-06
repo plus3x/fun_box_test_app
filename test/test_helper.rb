@@ -6,6 +6,7 @@ if ENV['COVERAGE']
     minimum_coverage 90
     maximum_coverage_drop 1
     add_group 'Workers', 'app/workers'
+    add_filter '/lib'
   end
 end
 
