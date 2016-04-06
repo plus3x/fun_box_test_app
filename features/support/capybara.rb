@@ -22,7 +22,7 @@ if ENV['DRIVER'] || ENV['BROWSER']
     require 'capybara/poltergeist'
 
     Capybara.register_driver :poltergeist do |app|
-      Capybara::Poltergeist::Driver.new(app, timeout: 15, debug: true)
+      Capybara::Poltergeist::Driver.new(app, timeout: 15, debug: true, js_errors: false)
     end
   end
 
