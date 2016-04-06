@@ -19,7 +19,10 @@ else
   require 'capybara/poltergeist'
 
   Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, timeout: 15)
+    Capybara::Poltergeist::Driver.new(app,
+                                      timeout: 15,
+                                      debug: ENV['POLTERGEIST_DEBUG'] == 'true',
+                                      js_errors: ENV['POLTERGEIST_JS_ERRORS'] != 'false')
   end
 end
 
