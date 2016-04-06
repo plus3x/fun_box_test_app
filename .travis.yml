@@ -2,10 +2,9 @@ language: ruby
 cache: bundler
 bundler_args: --jobs=3 --retry=3 --with cucumber test --without development production
 rvm: 2.3.0
-env:
-  - COVERAGE=true
-  - DISPLAY=:99.0
 before_script:
+  - export COVERAGE=true
+  - export DISPLAY=:99.0
   - phantomjs --version
   - firefox --version
   - chrome --version
