@@ -4,6 +4,11 @@ bundler_args: --jobs=3 --retry=3 --with cucumber test --without development prod
 rvm: 2.3.0
 env:
   - COVERAGE=true
+  - DISPLAY=:99.0
+before_script:
+  - phantomjs --version
+  - firefox --version
+  - chrome --version
 script:
   - bundle exec rubocop
   - bundle exec rails test
