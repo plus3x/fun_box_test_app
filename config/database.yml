@@ -23,5 +23,3 @@ test:
 production:
   adapter: <%= ENV['DATABASE_ADAPTER'] %>
   url: <%= ENV['DATABASE_URL'] %>
-  pool: 5
-  timeout: 5000
