@@ -20,6 +20,10 @@ if ENV['DRIVER'] || ENV['BROWSER']
     require 'capybara/webkit'
   when :poltergeist
     require 'capybara/poltergeist'
+
+    Capybara.register_driver :poltergeist do |app|
+      Capybara::Poltergeist::Driver.new(app, timeout: 15)
+    end
   end
 
   Capybara.javascript_driver = Capybara.default_driver = driver
