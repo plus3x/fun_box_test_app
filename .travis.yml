@@ -6,6 +6,11 @@ env: COVERAGE=true DISPLAY=:99.0 POLTERGEIST_DEBUG=true POLTERGEIST_JS_ERRORS=fa
 before_script:
   - phantomjs --version
   - firefox --version
+  - foreman start --port 3000 1>/dev/null 2>&1 &
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+after_script:
+  - pkill foreman
 script:
   - bundle exec rubocop
   - bundle exec rails test

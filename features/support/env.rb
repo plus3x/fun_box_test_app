@@ -9,6 +9,14 @@ require_relative '../../lib/app'
 require_relative '../../lib/page_object'
 
 ActionController::Base.allow_rescue = false
-Cucumber::Rails::Database.javascript_strategy = :truncation
+
+# remove DatabaseCleaner calling
+class Cucumber::Rails::Database::Strategy
+  def before_js(_)
+  end
+
+  def after
+  end
+end
 
 World(App)

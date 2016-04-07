@@ -1,9 +1,18 @@
 Metrics/LineLength:
   Max: 120
 
+Metrics/AbcSize:
+  Exclude:
+    - lib/page_objects/admin_page.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - app/controllers/currencies_controller.rb
+
 Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
+    - features/support/env.rb
 
 Style/NestedModifier:
   Exclude:

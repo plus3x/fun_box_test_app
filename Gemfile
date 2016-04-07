@@ -19,9 +19,7 @@ gem 'sinatra', require: false, github: 'sinatra/sinatra', branch: 'master'
 
 group :cucumber do
   gem 'cucumber-rails'
-  gem 'database_cleaner'
   gem 'capybara'
-  gem 'poltergeist', require: false
   gem 'selenium-webdriver', require: false
 end
 

@@ -3,7 +3,7 @@
 Given "I'm on $page_name page" do |page_name|
   start = Time.zone.now
   until on(page_class(page_name)).active?
-    visit send(page_name.downcase.sub(' ', '_') + '_path', I18n.locale)
+    visit send(page_name.downcase.sub(' ', '_') + '_path')
     raise "Can't go to the page #{page_name}" if Time.zone.now > start + 5
   end
 end

@@ -66,7 +66,6 @@ GEM
       xpath (~> 2.0)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
-    cliver (0.3.2)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -94,7 +93,6 @@ GEM
       nokogiri (~> 1.5)
       railties (>= 3, < 5)
     cucumber-wire (0.0.1)
-    database_cleaner (1.5.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
@@ -148,11 +146,6 @@ GEM
     parser (2.3.0.7)
       ast (~> 2.2)
     pg (0.18.4)
-    poltergeist (1.9.0)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      multi_json (~> 1.0)
-      websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -282,14 +275,12 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.1.0)
   cucumber-rails
-  database_cleaner
   foreman
   haml-rails
   jquery-rails
   listen (~> 3.0.5)
   mocha
   pg
-  poltergeist
   pry-rails
   puma
   rails (>= 5.0.0.beta3, < 5.1)

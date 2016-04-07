@@ -11,7 +11,8 @@ class CurrenciesController < ApplicationController
     respond_to do |format|
       format.js do
         if @currency.save
-          render :success, notice: 'Currency succesfuly saved!'
+          flash.now[:notice] = 'Currency succesfuly saved!'
+          render :success
         else
           render :error
         end
@@ -26,7 +27,8 @@ class CurrenciesController < ApplicationController
     respond_to do |format|
       format.js do
         if @currency.update(currency_params)
-          render :success, notice: 'Currency succesfuly saved!'
+          flash.now[:notice] = 'Currency succesfuly saved!'
+          render :success
         else
           render :error
         end

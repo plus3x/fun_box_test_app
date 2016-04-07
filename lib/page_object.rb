@@ -4,22 +4,26 @@ class PageObject
   include Utils
 
   def active?
-    return true if expected_elements.empty?
+    return true if distinctive_elements.empty?
 
-    expected_elements.all? { |name| send "#{name}?" }
+    distinctive_elements.all? { |name| send "#{name}?" }
   end
 
   def verify_active
     wait_for(error: "#{self.class.name} is not active") { active? }
   end
 
+  def verify_no_active
+    wait_for(error: "#{self.class.name} is still active") { !active? }
+  end
+
   private
 
-  def expected_elements
-    @expected_elements ||=
+  def distinctive_elements
+    @distinctive_elements ||=
       begin
         self.class.constants
-            .grep(/_EXPECTED_ELEMENTS\z/)
+            .grep(/_DISTINCTIVE_ELEMENTS\z/)
             .map { |const| self.class.const_get(const) }
             .flatten
       rescue NameError
@@ -28,28 +32,25 @@ class PageObject
   end
 
   class << self
-    TAGS = %i(field button link form header).freeze
+    TAGS = %i(field button link form header select).freeze
     CLICKABLE_TAGS = %i(button link).freeze
-    WRITEBLE_TAGS = %i(text_field).freeze
+    WRITEBLE_TAGS = %i(field).freeze
     TAG_ALIASES = {
-      text_field: ['input'],
+      field: ['input'],
       button: %w(input a button),
       link: ['a'],
       header: %w(h1 h2 h3 h4)
     }.freeze
     TAG_TYPES = {
-      text_field: %w(text email password),
+      field: %w(text email password),
       button: ['', 'button']
     }.freeze
 
     def define_xpath_method(tag, name, options)
-      finder_matcher = "[@#{options.keys.first}='#{options.values.first}']"
-      type_matcher   = "[@type = ('#{TAG_TYPES[tag].join("' or '")}')]" if TAG_TYPES[tag]
-      tag_matcher    = "[local-name()='#{tag}']"
-      tag_matcher    = "[local-name() = ('#{TAG_ALIASES[tag].join("' or '")}')]" if TAG_ALIASES[tag]
+      xpath = options[:xpath] || xpath_from(tag, options)
 
       define_method("#{name}_xpath") do
-        ['//*', tag_matcher, type_matcher, finder_matcher].join
+        xpath
       end
     end
 
@@ -92,13 +93,24 @@ class PageObject
       end
     end
 
+    def distinctive_elements
+      const_name = "#{name.upcase}_DISTINCTIVE_ELEMENTS"
+      const_set(const_name, []) unless const_defined?(const_name)
+      const_get(const_name)
+    end
+
+    def xpath_from(tag, options)
+      finder_matcher = "[@#{options.keys.first}='#{options.values.first}']"
+      type_matcher   = "[@type = ('#{TAG_TYPES[tag].join("' or '")}')]" if TAG_TYPES[tag]
+      tag_matcher    = "[local-name()='#{tag}']"
+      tag_matcher    = "[local-name() = ('#{TAG_ALIASES[tag].join("' or '")}')]" if TAG_ALIASES[tag]
+
+      ['//*', tag_matcher, type_matcher, finder_matcher].join
+    end
+
     TAGS.each do |tag|
       define_method(tag) do |name, options|
-        if options[:expected] && options[:expected] == true
-          const_name = "#{self.name.upcase}_EXPECTED_ELEMENTS"
-          const_set(const_name, []) unless const_defined?(const_name)
-          const_get(const_name) << name
-        end
+        distinctive_elements << name if options.delete(:distinctive)
 
         define_xpath_method(tag, name, options)
         define_element_method(name)

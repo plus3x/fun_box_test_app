@@ -1,29 +1,18 @@
-driver = ENV['DRIVER'] || 'poltergeist'
+require 'selenium-webdriver'
 
-if driver == 'selenium'
-  require 'selenium-webdriver'
+browser = (ENV['BROWSER'] || :firefox).to_sym
 
-  browser = (ENV['BROWSER'] || :firefox).to_sym
+Selenium::WebDriver::Chrome::Service.executable_path = '/usr/local/bin/chromedriver' if browser == :chrome
 
-  Selenium::WebDriver::Chrome::Service.executable_path = '/usr/local/bin/chromedriver' if browser == :chrome
-
-  # Port polling cycle
-  sleep ENV['TEST_ENV_NUMBER'].to_i if browser == :safari
-
-  Capybara.register_driver :selenium do |app|
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.timeout = 120.seconds if browser == :safari
-    Capybara::Selenium::Driver.new(app, browser: browser, http_client: client)
-  end
-else
-  require 'capybara/poltergeist'
-
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app,
-                                      timeout: 15,
-                                      debug: ENV['POLTERGEIST_DEBUG'] == 'true',
-                                      js_errors: ENV['POLTERGEIST_JS_ERRORS'] != 'false')
-  end
+Capybara.register_driver :selenium do |app|
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.timeout = 120.seconds if browser == :safari
+  Capybara::Selenium::Driver.new(app, browser: browser, http_client: client)
 end
 
-Capybara.javascript_driver = Capybara.default_driver = driver.to_sym
+Capybara.javascript_driver = Capybara.default_driver = :selenium
+
+Capybara.configure do |config|
+  config.run_server = false
+  config.app_host = 'http://localhost:3000'
+end
